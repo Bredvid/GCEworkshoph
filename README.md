@@ -17,7 +17,7 @@ ssh -i ./id_rsa brukernavn@bastion.bredvid.io
 
 ## Creating an instance
 [https://cloud.google.com/sdk/gcloud/reference/compute/instances/create]
-
+``` gcloud compute instances create "NoeUnikt" --machine-type "f1-micro" --image-project ubuntu-os-cloud --image-family "ubuntu-1704" --network "default" --maintenance-policy "MIGRATE" --tags "workshop"
 bruk følgende config: 
 navnet må være unikt. for enkelhetsskyld bruk brukernavnet ditt. 
 zone: "us-east1-b" 
