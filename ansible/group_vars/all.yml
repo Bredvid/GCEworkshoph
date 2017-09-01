@@ -1,0 +1,10 @@
+---
+gce_ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+gce_account: "workshopadmin@bredvid-gcl-workshop.iam.gserviceaccount.com"
+gce_credentials: "~/workshopadmin.json"
+gce_project: bredvid-gcl-workshop
+gce_type: f1-micro
+gce_image: ubuntu-1704
+gce_disksize: 10
+gce_zone: us-east1-b
+gce_tags: workshop

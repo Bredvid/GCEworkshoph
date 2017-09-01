@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  become: no
+  roles:
+    -xxxx
+  tasks:
+   - xxxx
+
+---
+- hosts: tag_dintag
+  roles:
+   - xxx
+  tasks:
+   - zzzz

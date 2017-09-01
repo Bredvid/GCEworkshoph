@@ -1,0 +1,13 @@
+---
+
+- file:
+    path: /opt/workshop
+    state: directory
+    owner: workshop
+  become: true
+- git:
+    repo: git@github.com:Bredvid/GCLworkshop.git
+    accept_hostkey: true
+    dest: /opt/workshop
+  become: true
+  become_user: workshop

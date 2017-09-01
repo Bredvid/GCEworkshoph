@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  vars:
+    gce_tags: workshop,userbastion
+  roles:
+    - { role: gceCreate, tags: ['create'], gce_names: 'userbastion', dnsname='bastion' }
+
+- hosts: tag_userbastion
+  roles:
+    - { role: common-linux, tags: ['common'] }
+    - { role: userBastion, tags: ['bastion'] }

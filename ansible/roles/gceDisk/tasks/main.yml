@@ -1,0 +1,11 @@
+---
+- gce_pd:
+    zone: "{{ gce_zone }}"
+    state: "present"
+    service_account_email: "{{ gce_account }}"
+    credentials_file: "{{ gce_credentials }}"
+    project_id: "{{ gce_project }}"
+    name: "{{ gce_pdname }}"
+    size_gb: "{{ gce_pdsize}}"
+    state: "{{gce_state}}"
+  register: pd

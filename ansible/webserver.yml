@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  vars:
+    gce_tags: workshop,http-server,webserver2
+  roles:
+    - { role: gceCreate, tags: ['create'], gce_names: 'webserver2', dnsname='webserver' }
+
+- hosts: tag_webserver
+  roles:
+    - { role: common-linux, tags: ['common'] }
+    - { role: nodejs, tags: ['node'] }

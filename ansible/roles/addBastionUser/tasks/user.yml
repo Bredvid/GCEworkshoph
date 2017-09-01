@@ -1,0 +1,18 @@
+---
+- group:
+    name: workshop
+    state: present
+- user:
+    name: bredvid
+    become: yes
+    generate_ssh_key: no
+    shell: /opt/bredvidUseradd.sh
+
+- name: Allow 'bredvid' to have passwordless sudo for script
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    insertafter: '# User alias specification'
+    regexp: '^bredvid'
+    line: 'bredvid ALL=(ALL) NOPASSWD: /opt/addBredvidUser.sh'
+    validate: 'visudo -cf %s'

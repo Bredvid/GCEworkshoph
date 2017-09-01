@@ -1,0 +1,19 @@
+[admin]
+localhost ansible_connection=local
+
+[tag_bastion]
+[tag_userbastion]
+[tag_packer]
+[tag_webserver]
+
+[admin:children]
+tag_packer
+tag_bastion
+tag_userbastion
+tag_webserver
+
+[gcloud:children]
+admin
+
+[gcloud:vars]
+ansible_user=workshop

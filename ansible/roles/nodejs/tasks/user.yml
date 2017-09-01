@@ -1,0 +1,26 @@
+---
+- name: create user
+  user:
+    name: "bredvidweb"
+  become: yes
+- file:
+    path: /opt/bredvidweb
+    state: directory
+    owner: 'bredvidweb'
+    group: 'bredvidweb'
+  become: true
+
+- copy:
+    src: ~/workshop/backend
+    dest: /opt/bredvidweb
+    owner: 'bredvidweb'
+    group: 'bredvidweb'
+  become: yes
+- copy:
+    src: ~/workshop/webapp
+    dest: /opt/bredvidweb
+    owner: 'bredvidweb'
+    group: 'bredvidweb'
+  become: yes
+
+

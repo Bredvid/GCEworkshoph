@@ -1,0 +1,5 @@
+---
+- copy: "name={{ item}}, mode: 0755"
+  with-items:
+    - addWorkshopUser.sh
+    - bredvidUseradd.sh

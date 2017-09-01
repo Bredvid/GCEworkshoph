@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  vars:
+    gce_names: "{{name|deafault('test1') }}"
+  roles:
+    - { role: gceCreate, tags: ['skip','create'], }
+    - { role: gceControl, tags: ['skip','delete'], state: 'absent' }
+    - { role: gceControl, tags: ['skip','stop'], state: 'stopped' }
+    - { role: gceControl, tags: ['skip','start'], state: 'start' }

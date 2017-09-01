@@ -1,0 +1,7 @@
+---
+- template:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+  with_items:
+    - { src: bash_profile, dest: ~/.bash_profile}
+    - { src: bash_aliases, dest: ~/.bash_aliases}

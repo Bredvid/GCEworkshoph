@@ -1,0 +1,12 @@
+---
+- name: register dns
+  gcdns_record:
+    service_account_email: "{{ gce_account}}"
+    credentials_file: "{{ gce_credentials}}"
+    project_id: "{{ gce_project}}"
+    record: '{{dnsname}}.bredvid.io'
+    zone_id: 'bredvid-public'
+    type: A
+    overwrite: true
+    value: '{{ item.public_ip }}'
+  with_items: "{{ gce.instance_data }}"

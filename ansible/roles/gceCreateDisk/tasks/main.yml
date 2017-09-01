@@ -1,0 +1,12 @@
+---
+
+- gce:
+      instance_names: {{gce_names}}
+      zone: {{ gce_zone}}
+      machine_type: {{ gce_type}}
+      image: {{ gce_image}}
+      state: present
+      service_account_email: {{ gce_account}}
+      credentials_file: {{ gce_credentials}}
+      project_id: {{ gce_project}}
+      disk_size: {{ gce_size}}

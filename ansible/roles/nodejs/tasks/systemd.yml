@@ -1,0 +1,10 @@
+---
+- name: install bredvidweb systemd unit file
+  template: src=bredvidweb.service dest=/etc/systemd/system/bredvidweb.service
+- name: start myservice
+  systemd: state=started enabled=yes name=bredvidweb daemon_reload=yes
+- name: install bredvidweb systemd unit file
+  template: src=bredvidfrontend.service dest=/etc/systemd/system/bredvidfrontend.service
+- name: start myservice
+  systemd: state=started enabled=yes name=bredvidfrontend daemon_reload=yes
+

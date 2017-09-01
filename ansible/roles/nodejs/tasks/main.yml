@@ -1,0 +1,9 @@
+---
+- include: apt.yml
+  become: true
+- include: user.yml
+- include: systemd.yml
+  become: true
+- include: nginx.yml
+  become: true
+  tags: nginx

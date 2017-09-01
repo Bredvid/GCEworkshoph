@@ -1,0 +1,55 @@
+---
+- name: create user
+  user:
+    name: "{{ username }}"
+    generate_ssh_key: yes
+    shell: /bin/bash
+  register: new_user
+  become: yes
+- file:
+    path: /home/bredvid/keys/{{ username }}
+    state: directory
+    owner: 'bredvid'
+  become: true
+  when: copyTo is defined
+- name: "Download user key"
+  copy: remote_src=True src=/home/{{ username }}/.ssh/{{ item }} dest=/home/bredvid/keys/{{username}}/
+  when: copyTo is defined
+  become: true
+  with_items:
+    - id_rsa
+    - id_rsa.pub
+- name: Set authorized key took from file
+  authorized_key:
+    user: "{{ username }}"
+    state: present
+    key: "{{ new_user.ssh_public_key }}"
+  become: true
+- file:
+    path: "/home/{{ username }}/workshop"
+    state: absent
+  become: true
+
+- command: 'cp -r /opt/workshop ~/'
+  become: true
+  become_user: "{{ username }}"
+
+
+
+- copy:
+    src: ~/workshopuser.json
+    dest: "/home/{{ username }}/workshop"
+  become: true
+  become_user: "{{ username }}"
+
+
+
+- template:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+  with_items:
+    - { src: bash_profile, dest: ~/.bash_profile}
+    - { src: bash_aliases, dest: ~/.bash_aliases}
+  become: true
+  become_user: "{{ username }}"
+  tags: aliases

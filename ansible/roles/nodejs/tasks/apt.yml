@@ -1,0 +1,30 @@
+---
+- apt_key:
+    url: "https://dl.yarnpkg.com/debian/pubkey.gpg"
+    state: present
+- name: Add Nodesource apt key.
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+- name: Add NodeSource repositories for Node.js.
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "deb https://deb.nodesource.com/node_8.x zesty main"
+    - "deb https://dl.yarnpkg.com/debian/ stable main"
+  register: node_repo
+
+
+- name: Install packages
+  apt:
+    name: '{{item}}'
+    state: present
+    update_cache: yes
+  with_items:
+    - nodejs
+    - build-essential
+    - nginx
+    - nodejs
+    - yarn
+

@@ -1,0 +1,33 @@
+---
+- name: create user
+  user:
+    name: "bredvid"
+    generate_ssh_key: yes
+    password: '$6$Ye3RAO84A5$2Br10DPYjQ62/RHS3muzScVRbwN11qPa50bH6HyOQr4TWMckxG0RnlLrOEM1MnE7k/W2tky02u0Ij9cE6Ha67/'
+  become: yes
+- file:
+    path: /home/bredvid/keys
+    state: directory
+    mode: 0700
+    owner: 'bredvid'
+    group: 'bredvid'
+  become: true
+- copy:
+    src: login.sh
+    dest: /home/bredvid/login.sh
+    owner: bredvid
+    group: bredvid
+    mode: "u=rwx,g=r,o=r"
+  become: true
+- name: allow bredvid user to login with password
+  blockinfile:
+    path: /etc/ssh/sshd_config
+    marker: "# ANSIBLE - bredvid user allow pw login"
+    content: |
+      Match User bredvid
+             X11Forwarding no
+             AllowTcpForwarding no
+             PermitTTY no
+             ForceCommand /home/bredvid/login.sh
+             PasswordAuthentication yes
+  become: true

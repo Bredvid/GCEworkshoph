@@ -1,0 +1,6 @@
+---
+- name: create users
+  include: createUser.yml username={{ username }} copyTo='bredvid'
+  with_sequence: start=1 end=50 format=workshop%02d
+  loop_control:
+    loop_var: username

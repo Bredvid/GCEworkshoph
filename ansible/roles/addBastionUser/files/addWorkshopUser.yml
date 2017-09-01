@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  become: no
+  tasks:
+  - fail: msg="You have to define the username"
+    when: "bredvid_user is undefined"
+  - getent:
+      database: passwd
+      fail_key: False
+      key: "{{ bredvid_user }}"
+  - debug: var=getent_passwd
+  - fail: msg="User already exist"
+    when: "getent_passwd[bredvid_user][0] is defined"
+  - user:
+      name: "{{ bredvid_user}}
+      generate_ssh_key: yes
+      groups: workshop
+
+gcloud iam service-accounts keys create   ~/workshopUser.json  --iam-account workshopuser@bredvid-gcl-workshop.iam.gserviceaccount.com

@@ -1,0 +1,22 @@
+.Todos {
+}
+.Todos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+}
+.Todos ul {
+  list-style: none;
+  padding: 0;
+}
+.Todos > * {
+
+  align-self: center;
+  width: 20em;
+}
+.TodosInput {
+
+}
+

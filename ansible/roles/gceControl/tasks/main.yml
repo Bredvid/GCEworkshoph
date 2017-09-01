@@ -1,0 +1,9 @@
+---
+- gce:
+    name: "{{ inventory_hostname }}"
+    zone: "{{ gce_zone}}"
+    state: "{{ gce_state }}"
+    service_account_email: "{{ gce_account}}"
+    credentials_file: "{{ gce_credentials}}"
+    project_id: "{{ gce_project}}"
+  delegate_to: localhost

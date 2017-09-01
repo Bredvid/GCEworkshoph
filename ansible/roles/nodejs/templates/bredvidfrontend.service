@@ -1,0 +1,11 @@
+[Unit]
+Description=Example http service
+After=network.target
+
+[Service]
+User=bredvidweb
+WorkingDirectory=/opt/bredvidweb/webapp
+ExecStart=/usr/bin/node server.js
+
+[Install]
+WantedBy=multi-user.target

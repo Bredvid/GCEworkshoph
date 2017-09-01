@@ -1,0 +1,9 @@
+---
+- hosts: tag_workshop
+  vars:
+    gce_account:
+    gce_credentials:
+    gce_project: bredvid-gcl-workshop
+    gce_state: 'stopped'
+  roles:
+    - { role: gceControl  }

@@ -1,0 +1,40 @@
+---
+- hosts: localhost
+  vars:
+    gce_tags: workshop,http-server,webserver2
+  roles:
+    - { role: gceCreate, tags: ['create'], gce_names: 'webserver2', dnsname='webserver' }
+
+
+---
+- hosts: tag_webserver2
+  tasks:
+    - name: Install packages
+      apt:
+        name: '{{item}}'
+        state: present
+        update_cache: yes
+      with_items:
+        - nodejs
+        - build-essential
+        - nginx
+        - nodejs
+      become: true
+
+    - name: create user
+      user:
+        name: "bredvidweb"
+      become: yes
+    - file:
+        path: /opt/bredvidweb
+        state: directory
+        owner: 'bredvidweb'
+        group: 'bredvidweb'
+      become: true
+
+    - copy:
+        src: ~/workshop/backend
+        dest: /opt/bredvidweb
+        owner: 'bredvidweb'
+        group: 'bredvidweb'
+      become: yes
