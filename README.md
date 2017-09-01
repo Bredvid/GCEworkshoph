@@ -29,17 +29,17 @@ https://cloud.google.com/sdk/gcloud/reference/compute/ssh
 
 
 For tilgang via ssh ut av boksen kan dere settee: 
-metadata: '{"sshKeys":"workshop:{din public nøkkel fra id_rsa.pub} workshop"}'
+metadata: `{"sshKeys":"workshop:{din public nøkkel fra id_rsa.pub} workshop"}`
 
 Du kan da logge på med ssh workshop@navnpåboks
 
 
-##Deleting an instanceBruk
+## Deleting an instance
 https://cloud.google.com/sdk/gcloud/reference/compute/instances/delete
 
 
 
-#Ansible 
+# Ansible 
 Getting started: 
 http://docs.ansible.com/ansible/latest/intro_getting_started.html
 
