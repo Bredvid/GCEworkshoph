@@ -59,3 +59,16 @@ legge til pakker  http://docs.ansible.com/ansible/latest/apt_module.html
 Intro til inventory: http://docs.ansible.com/ansible/latest/intro_inventory.html
 
 
+
+## Firebase config
+```
+var config = {
+    apiKey: "AIzaSyC0Y6x6HOe-5N4enhR-EzIloW8xId3Yir0",
+    authDomain: "tasks-531a6.firebaseapp.com",
+    databaseURL: "https://tasks-531a6.firebaseio.com",
+    projectId: "tasks-531a6",
+    storageBucket: "tasks-531a6.appspot.com",
+    messagingSenderId: "186940300921"
+  };
+```
+
