@@ -20,7 +20,7 @@ https://cloud.google.com/sdk/gcloud/reference/compute/instances/create
 
 
 ```
-gcloud compute instances create "NoeUnikt" --machine-type "f1-micro" --image-project ubuntu-os-cloud --image-family "ubuntu-1704" --network "default" --maintenance-policy "MIGRATE" --tags "workshop" --external_ip_address=none
+gcloud compute instances create "NoeUnikt" --machine-type "f1-micro" --image-project ubuntu-os-cloud --image-family "ubuntu-1704" --network "default" --maintenance-policy "MIGRATE" --tags "workshop" --no_address
 ```
 
 ## connecting to an instance: 
